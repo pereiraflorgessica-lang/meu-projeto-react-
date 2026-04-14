@@ -1,64 +1,120 @@
-import React from 'react'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
+import './App.css'
 
-// PASSO 1: O Array de Dados (Onde ficam seus projetos)
-const meusProjetos = [
-  {
-    id: 1,
-    nome: "FitPlan Pro",
-    descricao: "Um sistema para gerenciar treinos e dietas.",
-    link: "https://github.com/seu-usuario/fitplan"
-  },
-  {
-    id: 2,
-    nome: "Meu Portfólio Estático",
-    descricao: "A primeira versão do meu site usando HTML e CSS.",
-    link: "https://github.com/seu-usuario/portfolio-antigo"
-  },
-  {
-    id: 3,
-    nome: "Projeto Futuro",
-    descricao: "Aqui virá um novo projeto incrível em breve.",
-    link: "#"
-  }
-];
-
-// PASSO 2: Componente 1 - O Card (O molde de cada projeto)
-function ProjetoCard({ projeto }) {
-  return (
-    <div style={{ border: '2px solid #646cff', borderRadius: '8px', padding: '15px', margin: '10px' }}>
-      <h3>{projeto.nome}</h3>
-      <p>{projeto.descricao}</p>
-      <a href={projeto.link} target="_blank" rel="noreferrer">Ver no GitHub</a>
-    </div>
-  );
-}
-
-// PASSO 3: Componente 2 - A Seção de Projetos (Onde a lista é renderizada)
-function SecaoProjetos() {
-  return (
-    <section style={{ padding: '20px' }}>
-      <h2>Meus Projetos</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
-        {/* Aqui acontece a renderização dinâmica usando .map() */}
-        {meusProjetos.map((item) => (
-          <ProjetoCard key={item.id} projeto={item} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// O componente principal que junta tudo
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center' }}>
-      <h1>Bem-vindo ao meu Portfólio React</h1>
-      <p>Este site foi migrado para React com sucesso!</p>
-      
-      {/* Chamando o componente que criamos */}
-      <SecaoProjetos />
-      
-    </div>
+    <>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
+    </>
   )
 }
 
